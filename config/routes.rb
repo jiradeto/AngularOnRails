@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
-  resources :photos
+  
+
+
+  namespace :api, defaults: { format: :json } do
+    resources :photos, only: [:index, :show, :create, :update]
+  end
+
   root to: 'application#index'
   get '*path' => 'application#index'
 

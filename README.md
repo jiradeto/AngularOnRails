@@ -1,24 +1,15 @@
-# README
+== Angular2 Rails Example
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Angular2 + Rails + Webpack  examples.
 
-Things you may want to cover:
+=== Install
 
-* Ruby version
+  bundle install
+  bundle exec rake db:create db:migrate db:seed
+  npm install
+	
 
-* System dependencies
+=== How to run
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+  npm start
+  bundle exec rails server
