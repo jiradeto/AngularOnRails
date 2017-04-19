@@ -14,9 +14,9 @@
 				<tr *ngFor="let photo of photos">
 					<td>{{photo.id}}</td>
 					<td>{{photo.title}}</td>
-					<td>{{photo.price}}</td>
+					<td>{{photo.price | currency:'USD':true:'.0' }}</td>
 					<td>
-						<button type="button" class="btn btn-warning">Edit</button>
+						<button type="button" class="btn btn-warning" (click)="goEdit(photo)">Edit</button>
 						<button type="button" class="btn btn-danger" (click)="myModal.open()">Delete</button>
 					</td>
 					<modal #myModal>

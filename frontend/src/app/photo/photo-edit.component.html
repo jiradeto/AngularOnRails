@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="photo">
 	<div class="thumbnail">
 		<img src="{{ photo.url}}">
 		<div class="caption">
@@ -11,7 +11,7 @@
 
 	<div class="jumbotron">
 
-		<form #photoForm='ngForm' (ngSubmit)="createPhoto(photo)">
+		<form #photoForm='ngForm' (ngSubmit)="updatePhoto(photo)">
 
 			<div class="form-group">
 				<label for="title">Title</label>
@@ -35,12 +35,14 @@
 				<label for="description">Description <em>(Optional)</em></label>
 				<textarea class="form-control" type="text" id="description" required name="description" [(ngModel)]="photo.description"></textarea>
 			</div>
-			<button type="submit" class="btn btn-primary btn-lg" [disabled]="!photoForm.form.valid" [hidden]="submitted">
-            Create photos
+			<div class="text-center">
+				<button type="submit" class="btn btn-success btn-lg" [disabled]="!photoForm.form.valid" [hidden]="submitted">
+            Update
       </button>
+			</div>
 
 			<div class="alert alert-success" [hidden]="!submitted">
-				<strong>Your photos has been submitted !!</strong> <a href="" class="alert-link" routerLink='/photos'>View all photos</a>
+				<strong>Your photos has been updated !!</strong> <a href="" class="alert-link" routerLink='/photos'>View all photos</a>
 			</div>
 
 		</form>

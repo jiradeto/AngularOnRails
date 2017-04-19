@@ -16,7 +16,11 @@ export class PhotoService {
 			.catch(this.handleError)
 	}
 
-
+	updatePhoto(photo) {
+		let headers = new Headers({ 'Content-Type': 'application/json' });
+		let options = new RequestOptions({ headers: headers });
+		return this.http.put(this.photoUrl + "/" + photo.id, JSON.stringify(photo), options).map((res: Response) => res.json());
+	}
 
 	getPhoto(id: number) {
 		return this.http.get(this.photoUrl + "/" + id)

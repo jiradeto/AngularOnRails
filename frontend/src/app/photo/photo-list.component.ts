@@ -37,7 +37,7 @@ export class PhotoListComponent {
 			);
 	}
 
-	goToShow(photo: Photo): void {
+	goEdit(photo) {
 		let link = ['/photo', photo.id]
 		this.router.navigate(link);
 	}

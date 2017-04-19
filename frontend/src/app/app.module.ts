@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { PhotoNewComponent } from './photo/photo-new.component';
 import { PhotoListComponent } from './photo/photo-list.component';
+import { PhotoEditComponent } from './photo/photo-edit.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { PhotoListComponent } from './photo/photo-list.component';
 		AppComponent,
 		HomepageComponent,
 		PhotoNewComponent,
-		PhotoListComponent
+		PhotoListComponent,
+		PhotoEditComponent
 	],
 	imports: [
 		BrowserModule,
