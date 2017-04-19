@@ -5,7 +5,7 @@ Angular2 + Rails + Webpack CRUD examples.
 ### Install
 ```
   bundle install
-  bundle exec rake db:create db:migrate db:seed
+  bundle exec rake db:setup
   npm install
   tsd install
 ```
@@ -39,12 +39,23 @@ Connect Rails with Angular
 - [/app/helpers/application_helper.rb](https://github.com/jiradeto/AngularOnRails/blob/master/app/helpers/application_helper.rb)
 ```
 def webpack_script_for(bundle)
-    path = Rails.root.join('frontend', 'webpack-assets.json')
-    file = File.read(path)
-    json = JSON.parse(file)
-    content_tag(:script, '', src: json[bundle]['js'])
- end
+  path = Rails.root.join('frontend', 'webpack-assets.json')
+  file = File.read(path)
+  json = JSON.parse(file)
+  content_tag(:script, '', src: json[bundle]['js'])
+end
  ```
+
+ - [/app/views/layouts/application.html.erb](https://github.com/jiradeto/AngularOnRails/blob/master/app/views/layouts/application.html.erb)
+ ```
+ <body>
+    <%= yield %>
+    <root-app> </root-app>
+    <%= webpack_script_for("vendor") %>
+    <%= webpack_script_for("app") %>
+</body>
+  ```
+
 
 Angular Routing
 - [/frontend/src/app/app-routing.module.ts](https://github.com/jiradeto/AngularOnRails/blob/master/frontend/src/app/app-routing.module.ts)
