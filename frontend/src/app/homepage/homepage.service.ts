@@ -7,7 +7,6 @@ import { Photo } from '../photo/photo';
 export class HomepageService {
 	private documentUrl = "/api/photos";
 	constructor(private http: Http) {
-
 	}
 
 	getDocuments(): Observable<Photo[]> {
