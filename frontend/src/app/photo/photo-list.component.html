@@ -1,0 +1,38 @@
+<div class="container">
+	<div class="jumbotron">
+		<h2>List of Photos</h2>
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>id</th>
+					<th>title</th>
+					<th>price</th>
+					<th>options</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let photo of photos">
+					<td>{{photo.id}}</td>
+					<td>{{photo.title}}</td>
+					<td>{{photo.price}}</td>
+					<td>
+						<button type="button" class="btn btn-warning">Edit</button>
+						<button type="button" class="btn btn-danger" (click)="myModal.open()">Delete</button>
+					</td>
+					<modal #myModal>
+						<modal-header>
+							<h3>Confirm Delete ?</h3>
+						</modal-header>
+						<modal-content>
+							This is from ng2-modal library !!
+						</modal-content>
+						<modal-footer>
+							<button class="btn btn-default" (click)="myModal.close()">Close</button>
+							<button class="btn btn-danger" (click)="deletePhoto(photo)">Delete</button>
+						</modal-footer>
+					</modal>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

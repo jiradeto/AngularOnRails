@@ -5,29 +5,27 @@ import { Photo } from './photo';
 
 @Injectable()
 export class PhotoService {
-	private proposalsUrl = "/api/photos";
+	private photoUrl = "/api/photos";
 	constructor(private http: Http) {
 
 	}
 
-	// getProposals(): Observable<Proposal[]> {
-	// 	return this.http.get(this.proposalsUrl)
-	// 		.map((response: Response) => <Proposal[]>response.json())
-	// 		.catch(this.handleError)
-	// }
+	getPhotos(): Observable<Photo[]> {
+		return this.http.get(this.photoUrl)
+			.map((response: Response) => <Photo[]>response.json())
+			.catch(this.handleError)
+	}
 
-	// getProposal(id: number) {
-	// 	return this.http.get(this.proposalsUrl + "/" + id)
-	// 		.map((response: Response) => <Proposal>response.json())
-	// 		.catch(this.handleError)
-	// }
+	getPhoto(id: number) {
+		return this.http.get(this.photoUrl + "/" + id)
+			.map((response: Response) => <Photo>response.json())
+			.catch(this.handleError)
+	}
 
-
-
-	createProposal(photo) {
+	createPhoto(photo) {
 		let headers = new Headers({ 'Content-Type': 'application/json' });
 		let options = new RequestOptions({ headers: headers });
-		return this.http.post(this.proposalsUrl, JSON.stringify(photo), options).map((res: Response) => res.json());
+		return this.http.post(this.photoUrl, JSON.stringify(photo), options).map((res: Response) => res.json());
 	}
 
 	private handleError(error: Response | any) {

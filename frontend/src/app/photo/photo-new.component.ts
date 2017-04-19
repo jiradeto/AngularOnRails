@@ -16,10 +16,9 @@ export class PhotoNewComponent {
 
 	}
 
-
 	createPhoto(photo) {
 		this.submitted = true;
-		this.photoService.createProposal(photo)
+		this.photoService.createPhoto(photo)
 			.subscribe(
 			data => { return true; },
 			error => {
