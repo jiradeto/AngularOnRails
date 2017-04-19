@@ -16,8 +16,16 @@ export class PhotoService {
 			.catch(this.handleError)
 	}
 
+
+
 	getPhoto(id: number) {
 		return this.http.get(this.photoUrl + "/" + id)
+			.map((response: Response) => <Photo>response.json())
+			.catch(this.handleError)
+	}
+
+	deletePhoto(photo) {
+		return this.http.delete(this.photoUrl + "/" + photo.id)
 			.map((response: Response) => <Photo>response.json())
 			.catch(this.handleError)
 	}

@@ -26,8 +26,15 @@ export class PhotoListComponent {
 		)
 	}
 
-	deletePhoto(photo: Photo) {
-		console.log('delete me !!');
+	deletePhoto(photo, modal) {
+		this.photoService.deletePhoto(photo)
+			.subscribe(
+			() => {
+				modal.close;
+				this.getPhotos();
+				return true;
+			}
+			);
 	}
 
 	goToShow(photo: Photo): void {

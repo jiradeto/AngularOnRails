@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
 
   namespace :api, defaults: { format: :json } do
-    resources :photos, only: [:index, :show, :create, :update]
+    resources :photos
   end
 
   root to: 'application#index'
