@@ -37,7 +37,7 @@ Reference every component in App Module
 
 Connect Rails with Angular
 - [/app/helpers/application_helper.rb](https://github.com/jiradeto/AngularOnRails/blob/master/app/helpers/application_helper.rb)
-```
+```ruby
 def webpack_script_for(bundle)
   path = Rails.root.join('frontend', 'webpack-assets.json')
   file = File.read(path)
@@ -47,7 +47,7 @@ end
  ```
 
  - [/app/views/layouts/application.html.erb](https://github.com/jiradeto/AngularOnRails/blob/master/app/views/layouts/application.html.erb)
- ```
+ ```html
  <body>
     <%= yield %>
     <root-app> </root-app>
