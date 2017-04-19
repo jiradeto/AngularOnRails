@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { HomepageComponent } from './homepage/homepage.component';
 import { PhotoNewComponent } from './photo/photo-new.component';
+import { Ng2BootstrapModule } from 'ngx-bootstrap';
 
 @NgModule({
 	declarations: [
@@ -16,6 +17,7 @@ import { PhotoNewComponent } from './photo/photo-new.component';
 		PhotoNewComponent
 	],
 	imports: [
+		Ng2BootstrapModule.forRoot(),
 		BrowserModule,
 		FormsModule,
 		HttpModule,

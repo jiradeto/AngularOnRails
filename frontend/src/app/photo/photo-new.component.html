@@ -1,1 +1,50 @@
-<h1>Create new Photo </h1>
+<div class="container">
+
+	<div class="thumbnail">
+		<img src="{{ photo.url}}">
+		<div class="caption">
+			<h3>{{ photo.title}}</h3>
+			<em>Price: {{photo.price | currency:'USD':true:'.0' }}</em>
+			<br/>
+			<small> {{photo.description}}.</small>
+		</div>
+	</div>
+
+	<div class="jumbotron">
+
+		<form #photoForm='ngForm' (ngSubmit)="createPhoto(photo)">
+
+			<div class="form-group">
+				<label for="title">Title</label>
+				<input class="form-control" type="text" id="title" required name="title" [(ngModel)]="photo.title">
+			</div>
+
+			<div class="form-group">
+				<label for="url">Photo URL</label>
+				<input class="form-control" type="text" id="url" required name="url" [(ngModel)]="photo.url">
+			</div>
+
+			<div class="form-group">
+				<label for="price">Price</label>
+				<div class="input-group">
+					<span class="input-group-addon">$</span>
+					<input class="form-control" type="number" id="price" required name="price" [(ngModel)]="photo.price">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="description">Description <em>(Optional)</em></label>
+				<textarea class="form-control" type="text" id="description" required name="description" [(ngModel)]="photo.description"></textarea>
+			</div>
+			<button type="submit" class="btn btn-primary btn-lg" [disabled]="!photoForm.form.valid" [hidden]="submitted">
+            Create photos
+      </button>
+
+			<div class="alert alert-success" [hidden]="!submitted">
+				<strong>Your photos has been submitted !!</strong> <a href="" class="alert-link" routerLink='/photos'>View all photos</a>
+			</div>
+
+		</form>
+	</div>
+
+</div>
