@@ -28,7 +28,8 @@ Setting web pack
 Setting TypeScript
 - [/tsconfig.json](https://github.com/jiradeto/AngularOnRails/blob/master/tsconfig.json)
 
-Seperate each function per each directory (has service, template, component)
+
+Separate each feature in directory (homepage, login, photo)
 - [/frontend/src/app/homepage](https://github.com/jiradeto/AngularOnRails/tree/master/frontend/src/app/homepage)
 - [/frontend/src/app/photo](https://github.com/jiradeto/AngularOnRails/tree/master/frontend/src/app/photo)
 
@@ -62,3 +63,10 @@ Angular Routing
 
 Angular Service ( call REST API )
 - [/frontend/src/app/photo/photo.service.ts](https://github.com/jiradeto/AngularOnRails/blob/master/frontend/src/app/photo/photo.service.ts)
+
+Access URL parameter in Angular
+- [/frontend/src/app/photo/photo-edit.component.ts](https://github.com/jiradeto/AngularOnRails/blob/master/frontend/src/app/photo/photo-edit.component.ts)
+```javascript
+route.params.flatMap((params: Params) => 
+    this.photoService.getPhoto(params['id']));
+```

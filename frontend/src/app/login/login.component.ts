@@ -1,18 +1,18 @@
 
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { AuthenticationService } from '../_services/authentication.sevice';
 
 @Component({
 	templateUrl: require('./login.component.html'),
-	providers: [AuthenticationService]
 })
 
-export class LoginComponent implements OnInit{
+export class LoginComponent implements OnInit {
 	model: any = {};
 	loading = false;
 	error = '';
+	returnUrl: string;
 
 	constructor(
 		private router: Router,
@@ -20,8 +20,11 @@ export class LoginComponent implements OnInit{
 	)
 	{ }
 
+
+
 	ngOnInit() {
 		this.authenticationService.logout();
+		// this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
 	}
 
 	login() {

@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core'
 import { Photo } from '../photo/photo'
-import { HomepageService } from './homepage.service'
 import { Observable } from 'rxjs/Rx'
+import { PhotoService } from '../_services/photo.service'
 
 @Component({
 	templateUrl: require('./homepage.component.html'),
-	providers: [HomepageService]
+	providers: [PhotoService]
 })
 export class HomepageComponent implements OnInit {
 	photos: Photo[];
 	errorMessage: string;
 
-	constructor(private service: HomepageService) {
+	constructor(private service: PhotoService) {
 	}
 
 	ngOnInit() {
@@ -19,11 +19,14 @@ export class HomepageComponent implements OnInit {
 		timer.subscribe(() => this.getPhotos());
 	}
 	getPhotos() {
-		this.service.getDocuments().subscribe(
+		this.service.getPhotos().subscribe(
 			photos => this.photos = photos,
 			error => this.errorMessage = <any>error
 		)
 	}
+
+	// MOCK Data 
+
 	// photos: Photo[] = [
 	// 	{
 	// 		title: 'Example 1',

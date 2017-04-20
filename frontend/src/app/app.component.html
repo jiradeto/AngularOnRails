@@ -10,8 +10,8 @@
             </button>
       <a class="navbar-brand" routerLink=''>Home</a>
     </div>
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
+    <div id="navbar" class="navbar-collapse collapse" >
+      <ul class="nav navbar-nav" [hidden]="!authService.userLogin()" >
 
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Photos
@@ -21,7 +21,10 @@
             <li [routerLinkActive]="['active']"><a routerLink="/photos/new">New</a></li>
           </ul>
         </li>
-        <!--<li><a routerLinkActive="active" routerLink='/about'>About</a></li>-->
+        <!--<li *ngIf="login"><a routerLinkActive="active" routerLink='/about'>Logout</a></li>-->
+      </ul>
+      <ul class="nav navbar-nav navbar-right" [hidden]="!authService.userLogin()">
+        <li><a routerLink="/login" href="">Logout</a></li>
       </ul>
     </div>
   </div>

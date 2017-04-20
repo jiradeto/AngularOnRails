@@ -15,7 +15,7 @@ import { LoginComponent } from './login/login.component';
 
 //service 
 
-
+import { AuthenticationService } from './_services/authentication.sevice'
 import { AuthGuard } from './_guards/auth.guard'
 
 @NgModule({
@@ -34,7 +34,7 @@ import { AuthGuard } from './_guards/auth.guard'
 		ModalModule,
 		AppRoutingModule
 	],
-	providers: [AuthGuard],
+	providers: [AuthGuard, AuthenticationService],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }

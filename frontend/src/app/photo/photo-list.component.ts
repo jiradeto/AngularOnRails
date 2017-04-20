@@ -21,7 +21,7 @@ export class PhotoListComponent {
 
 	getPhotos() {
 		this.photoService.getPhotos().subscribe(
-			proposals => this.photos = proposals,
+			photos => this.photos = photos,
 			error => this.errorMessage = <any>error
 		)
 	}

@@ -1,15 +1,22 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, Response, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Rx'
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthenticationService {
 	public token: string;
+	private userLoggedIn: boolean = false;
 
-	constructor(private http: Http) {
+	constructor(private http: Http, private router: Router) {
 		// set token if saved in local storage
 		var currentUser = JSON.parse(localStorage.getItem('currentUser'));
 		this.token = currentUser && currentUser.token;
+	}
+
+
+	userLogin() {
+		return localStorage.getItem('currentUser');
 	}
 
 	login(username: string, password: string): Observable<boolean> {
@@ -22,14 +29,13 @@ export class AuthenticationService {
 				// login successful if there's a jwt token in the response
 				let token = response.json() && response.json().token;
 				if (token) {
-					console.log('yeah');
-					console.log(token);
 					// set token property
 					this.token = token;
 
 					// store username and jwt token in local storage to keep user logged in between page refreshes
 					localStorage.setItem('currentUser', JSON.stringify({ username: username, token: token }));
 
+					this.userLoggedIn = true;
 					// return true to indicate successful login
 					return true;
 				} else {
@@ -40,7 +46,8 @@ export class AuthenticationService {
 	}
 
 	logout() {
-		// clear token remove user from local storage to log user out
+		this.router.navigate(['/login']);
+		// this.userLoggedIn = false;
 		this.token = null;
 		localStorage.removeItem('currentUser');
 	}
