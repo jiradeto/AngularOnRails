@@ -22,7 +22,7 @@ Angular2 + Rails + Webpack CRUD examples.
 - [/frontend](https://github.com/jiradeto/AngularOnRails/tree/master/frontend)
 
 
-### Setting web pack 
+### basic setup 
 - [/webpack.config.js](https://github.com/jiradeto/AngularOnRails/blob/master/webpack.config.js)
 
 
