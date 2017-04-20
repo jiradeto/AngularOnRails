@@ -19,11 +19,14 @@ Angular2 + Rails + Webpack CRUD examples.
 ## Description 
 
 ### Angular directory
-- [/frontend](https://github.com/jiradeto/AngularOnRails/tree/master/frontend)
+>- [/frontend](https://github.com/jiradeto/AngularOnRails/tree/master/frontend)
 
 
 ### basic setup 
-- [/webpack.config.js](https://github.com/jiradeto/AngularOnRails/blob/master/webpack.config.js)
+>[/webpack.config.js](https://github.com/jiradeto/AngularOnRails/blob/master/webpack.config.js)
+- Webpack - use for mobuld bundler and compile Tyscript file to JavaScript
+
+
 
 
 ### Setting TypeScript
