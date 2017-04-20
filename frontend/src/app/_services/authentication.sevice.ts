@@ -45,8 +45,7 @@ export class AuthenticationService {
 	}
 
 	logout() {
-		// this.router.navigate(['/']);
-		// this.userLoggedIn = false;
+
 		this.token = null;
 		localStorage.removeItem('currentUser');
 	}

@@ -12,6 +12,7 @@ import { PhotoNewComponent } from './photo/photo-new.component';
 import { PhotoListComponent } from './photo/photo-list.component';
 import { PhotoEditComponent } from './photo/photo-edit.component';
 import { LoginComponent } from './login/login.component';
+import { LogoutComponent } from './logout/logout.component';
 
 //service 
 
@@ -27,7 +28,8 @@ import { RouterStateSnapshot } from '@angular/router';
 		PhotoNewComponent,
 		PhotoListComponent,
 		PhotoEditComponent,
-		LoginComponent
+		LoginComponent,
+		LogoutComponent
 	],
 	imports: [
 		BrowserModule,

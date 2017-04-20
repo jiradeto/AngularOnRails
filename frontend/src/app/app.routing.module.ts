@@ -9,12 +9,14 @@ import { PhotoNewComponent } from './photo/photo-new.component'
 import { PhotoListComponent } from './photo/photo-list.component'
 import { PhotoEditComponent } from './photo/photo-edit.component'
 import { LoginComponent } from './login/login.component'
+import { LogoutComponent } from './logout/logout.component'
 
 
 
 const routes: Routes = [
 
 	{ path: 'login', component: LoginComponent },
+	{ path: 'logout', component: LogoutComponent },
 	{ path: '', component: HomepageComponent },
 	{ path: 'photos/new', component: PhotoNewComponent, canActivate: [AuthGuard] },
 	{ path: 'photos', component: PhotoListComponent, canActivate: [AuthGuard] },
