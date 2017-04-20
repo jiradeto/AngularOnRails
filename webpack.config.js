@@ -47,6 +47,10 @@ module.exports = {
 				use: 'tslint-loader'
 			},
 			{
+				test: /\.erb$/,				
+				loader: 'rails-erb-loader'
+			},
+			{
 				test: /\.css$/,
 				use: 'css-loader'
 			},
@@ -58,6 +62,7 @@ module.exports = {
 				test: /\.html$/,
 				use: 'file-loader'
 			}
+			
 		]
 	},
 

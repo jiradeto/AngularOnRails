@@ -18,6 +18,8 @@ import { LoginComponent } from './login/login.component';
 import { AuthenticationService } from './_services/authentication.sevice'
 import { AuthGuard } from './_guards/auth.guard'
 
+import { RouterStateSnapshot } from '@angular/router';
+
 @NgModule({
 	declarations: [
 		AppComponent,

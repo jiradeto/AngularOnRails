@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 @Injectable()
 export class AuthenticationService {
 	public token: string;
-	private userLoggedIn: boolean = false;
+	
 
 	constructor(private http: Http, private router: Router) {
 		// set token if saved in local storage
@@ -14,8 +14,7 @@ export class AuthenticationService {
 		this.token = currentUser && currentUser.token;
 	}
 
-
-	userLogin() {
+	userLoggedIn() {
 		return localStorage.getItem('currentUser');
 	}
 
@@ -35,7 +34,7 @@ export class AuthenticationService {
 					// store username and jwt token in local storage to keep user logged in between page refreshes
 					localStorage.setItem('currentUser', JSON.stringify({ username: username, token: token }));
 
-					this.userLoggedIn = true;
+					
 					// return true to indicate successful login
 					return true;
 				} else {
@@ -46,7 +45,7 @@ export class AuthenticationService {
 	}
 
 	logout() {
-		this.router.navigate(['/login']);
+		// this.router.navigate(['/']);
 		// this.userLoggedIn = false;
 		this.token = null;
 		localStorage.removeItem('currentUser');

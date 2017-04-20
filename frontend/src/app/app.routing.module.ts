@@ -15,7 +15,7 @@ import { LoginComponent } from './login/login.component'
 const routes: Routes = [
 
 	{ path: 'login', component: LoginComponent },
-	{ path: '', component: HomepageComponent, canActivate: [AuthGuard] },
+	{ path: '', component: HomepageComponent },
 	{ path: 'photos/new', component: PhotoNewComponent, canActivate: [AuthGuard] },
 	{ path: 'photos', component: PhotoListComponent, canActivate: [AuthGuard] },
 	{ path: 'photo/:id', component: PhotoEditComponent, canActivate: [AuthGuard] },
