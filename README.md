@@ -18,24 +18,33 @@ Angular2 + Rails + Webpack CRUD examples.
 
 ## Description 
 
-Angular directory
+### Angular directory
 - [/frontend](https://github.com/jiradeto/AngularOnRails/tree/master/frontend)
 
-Setting web pack 
+
+
+### Setting web pack 
 - [/webpack.config.js](https://github.com/jiradeto/AngularOnRails/blob/master/webpack.config.js)
 
-Setting TypeScript
+
+
+### Setting TypeScript
 - [/tsconfig.json](https://github.com/jiradeto/AngularOnRails/blob/master/tsconfig.json)
 
 
-Separate each feature in directory (homepage, login, photo)
+
+### Separate each feature in directory (homepage, login, photo)
+other code such as services, models, guards etc are placed in folders prefixed with an underscore to easily differentiate them and group them together at the top of the folder structure.
 - [/frontend/src/app/homepage](https://github.com/jiradeto/AngularOnRails/tree/master/frontend/src/app/homepage)
 - [/frontend/src/app/photo](https://github.com/jiradeto/AngularOnRails/tree/master/frontend/src/app/photo)
+
+
 
 Reference every component in App Module
 - [/frontend/src/app/app.module.ts](https://github.com/jiradeto/AngularOnRails/blob/master/frontend/src/app/app.module.ts)
 
 Connect Rails with Angular
+> implement helper for include Angular 
 - [/app/helpers/application_helper.rb](https://github.com/jiradeto/AngularOnRails/blob/master/app/helpers/application_helper.rb)
 ```ruby
 def webpack_script_for(bundle)
