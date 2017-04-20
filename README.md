@@ -7,7 +7,6 @@ Angular2 + Rails + Webpack CRUD examples.
   bundle install
   bundle exec rake db:setup
   npm install
-  tsd install
 ```
 
 ### How to run

@@ -1,17 +1,31 @@
 import { Component, OnInit } from '@angular/core'
-import { Photo } from '../photo/photo'
-import { Observable } from 'rxjs/Rx'
+import { Photo } from '../_models/photo'
+import { Observable, Subscription } from 'rxjs/Rx'
 import { PhotoService } from '../_services/photo.service'
+import { MessageService } from '../_services/message.service'
+
 
 @Component({
 	templateUrl: require('./homepage.component.html'),
 	providers: [PhotoService]
 })
 export class HomepageComponent implements OnInit {
+	searchText: string;
 	photos: Photo[];
 	errorMessage: string;
+	subscription: Subscription;
 
-	constructor(private service: PhotoService) {
+	constructor(
+		private messageService: MessageService,
+		private service: PhotoService) {
+
+		this.subscription = this.messageService.getMessage()
+			.subscribe(message => {
+				
+				if (message) {
+					this.searchText = message.text;
+				}
+			});
 	}
 
 	ngOnInit() {

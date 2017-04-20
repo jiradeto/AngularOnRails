@@ -5,6 +5,8 @@ import { HttpModule } from '@angular/http';
 import { ModalModule } from "ng2-modal";
 import { AppRoutingModule } from './app.routing.module';
 
+import { SearchPhotoPipe } from './_pipes/search-photo.pipe'
+
 // Component
 import { AppComponent } from './app.component';
 import { HomepageComponent } from './homepage/homepage.component';
@@ -18,11 +20,13 @@ import { LogoutComponent } from './logout/logout.component';
 
 import { AuthenticationService } from './_services/authentication.sevice'
 import { AuthGuard } from './_guards/auth.guard'
+import { MessageService } from './_services/message.service'
 
 import { RouterStateSnapshot } from '@angular/router';
 
 @NgModule({
 	declarations: [
+		SearchPhotoPipe,
 		AppComponent,
 		HomepageComponent,
 		PhotoNewComponent,
@@ -38,7 +42,7 @@ import { RouterStateSnapshot } from '@angular/router';
 		ModalModule,
 		AppRoutingModule
 	],
-	providers: [AuthGuard, AuthenticationService],
+	providers: [AuthGuard, AuthenticationService, MessageService],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,5 @@
-
 <div class="container">
-	<div class="thumbnail" *ngFor="let photo of photos">
+	<div class="thumbnail" *ngFor=" let photo of photos | searchPhoto:searchText">
 		<img src="{{ photo.url}}" alt="...">
 		<div class="caption">
 			<h3>{{ photo.title}}</h3>
@@ -11,3 +10,8 @@
 	</div>
 </div>
 
+
+
+<!--"#customer of customers | customerEmailFilter:email; #i = index"-->
+
+<!--<div class="thumbnail" *ngFor="let photo of (photos | searchPhoto: City)">-->

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core'
-import { Photo } from './photo'
+import { Photo } from '../_models/photo'
 import { Observable } from 'rxjs/Rx'
-import { PhotoService } from './photo.service'
+import { PhotoService } from '../_services/photo.service'
 
 @Component({
 	templateUrl: require('./photo-new.component.html'),
