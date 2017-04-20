@@ -22,16 +22,17 @@ Angular2 + Rails + Webpack CRUD examples.
 >[/frontend](https://github.com/jiradeto/AngularOnRails/tree/master/frontend)
 
 
-### basic setup 
+### Webpack  
+use for module bundler and compile TypeScript file to JavaScript
 >[/webpack.config.js](https://github.com/jiradeto/AngularOnRails/blob/master/webpack.config.js)
-- Webpack - use for mobuld bundler and compile Tyscript file to JavaScript
 
 
 
 ### Separate each feature in directory (homepage, login, photo)
 other code such as services, models, guards etc are placed in folders prefixed with an underscore to easily differentiate them and group them together at the top of the folder structure.
-- [/frontend/src/app/homepage](https://github.com/jiradeto/AngularOnRails/tree/master/frontend/src/app/homepage)
-- [/frontend/src/app/photo](https://github.com/jiradeto/AngularOnRails/tree/master/frontend/src/app/photo)
+>[/frontend/src/app/homepage](https://github.com/jiradeto/AngularOnRails/tree/master/frontend/src/app/homepage) 
+
+>[/frontend/src/app/photo](https://github.com/jiradeto/AngularOnRails/tree/master/frontend/src/app/photo)
 
 
 ### Connect Rails with Angular
@@ -61,15 +62,24 @@ and then call helper function in layout file.
 ### Define Angular Routing
 >[/frontend/src/app/app-routing.module.ts](https://github.com/jiradeto/AngularOnRails/blob/master/frontend/src/app/app-routing.module.ts)
 
-### Using Angular Guard for protecting routes (require login before access)
+### Using Guard for protecting routes (require login before access) [Ref.](https://blog.thoughtram.io/angular/2016/07/18/guards-in-angular-2.html)
 >[/frontend/src/app/_guards/auth.guard.ts](https://github.com/jiradeto/AngularOnRails/blob/master/frontend/src/app/_guards/auth.guard.ts)
 
 
-reference
->[https://blog.thoughtram.io/angular/2016/07/18/guards-in-angular-2.html](https://blog.thoughtram.io/angular/2016/07/18/guards-in-angular-2.html)
+### Share data between 2 components ([ref.](http://jasonwatmore.com/post/2016/12/01/angular-2-communicating-between-components-with-observable-subject))
+implement MessageService to share data (string) that send from AppComponent to HomeComponent
+>[/frontend/src/app/_services/message.service.ts](https://github.com/jiradeto/AngularOnRails/blob/master/frontend/src/app/_services/message.service.ts)
 
-### Angular Service ( call REST API )
-- [/frontend/src/app/photo/photo.service.ts](https://github.com/jiradeto/AngularOnRails/blob/master/frontend/src/app/photo/photo.service.ts)
+>[/frontend/src/app/app.component.ts](https://github.com/jiradeto/AngularOnRails/blob/master/frontend/src/app/app.component.ts)
+
+>[/frontend/src/app/homepage/homepage.component.ts](https://github.com/jiradeto/AngularOnRails/blob/master/frontend/src/app/homepage/homepage.component.ts)
+
+
+
+
+### Angular service to call REST API 
+- [frontend/src/app/_services/photo.service.ts](https://github.com/jiradeto/AngularOnRails/blob/master/frontend/src/app/_services/photo.service.ts)
+
 
 
 ### Access URL parameter in Angular
@@ -77,4 +87,21 @@ reference
 ```javascript
 route.params.flatMap((params: Params) => 
     this.photoService.getPhoto(params['id']));
+```
+
+
+
+### Enable non-get method in Rails and Anguar [Ref.](http://stackoverflow.com/questions/14734243/rails-csrf-protection-angular-js-protect-from-forgery-makes-me-to-log-out-on)
+> [/app/controller/application_controller](https://github.com/jiradeto/AngularOnRails/blob/master/app/controller/application_controller.rb)
+```ruby
+def set_csrf_cookie_for_ng
+  cookies['XSRF-TOKEN'] = form_authenticity_token if protect_against_forgery?
+end
+
+  protected
+  # In Rails 4.2 and above
+def verified_request?
+  super || valid_authenticity_token?(session, request.headers['X-XSRF-TOKEN'])
+end
+
 ```

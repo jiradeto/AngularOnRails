@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, OnDestroy } from '@angular/core'
 import { Photo } from '../_models/photo'
 import { Observable, Subscription } from 'rxjs/Rx'
 import { PhotoService } from '../_services/photo.service'
@@ -9,7 +9,7 @@ import { MessageService } from '../_services/message.service'
 	templateUrl: require('./homepage.component.html'),
 	providers: [PhotoService]
 })
-export class HomepageComponent implements OnInit {
+export class HomepageComponent implements OnInit, OnDestroy {
 	searchText: string;
 	photos: Photo[];
 	errorMessage: string;
@@ -21,16 +21,17 @@ export class HomepageComponent implements OnInit {
 
 		this.subscription = this.messageService.getMessage()
 			.subscribe(message => {
-				
-				if (message) {
-					this.searchText = message.text;
-				}
+				this.searchText = message.text;
 			});
 	}
+
 
 	ngOnInit() {
 		let timer = Observable.timer(0, 5000);
 		timer.subscribe(() => this.getPhotos());
+	}
+	ngOnDestroy() {
+		this.subscription.unsubscribe();
 	}
 	getPhotos() {
 		this.service.getPhotos().subscribe(

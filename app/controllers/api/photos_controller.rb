@@ -1,12 +1,25 @@
 class Api::PhotosController < ApplicationController
   before_action :set_photo, only: [:show, :edit, :update, :destroy]
 
-  # GET /photos
-  # GET /photos.json
+  def render_error
+    respond_to do |format|
+      format.json { render json: { message: 'unauthorization' }, status: 401 }
+    end
+  end
+
   def index
-    # @photos = Photo.all
-    @photos = Photo.order('id DESC')
-    render json: @photos
+    unless request.headers['Authorization']
+      render_error
+    else
+      if request.headers['Authorization'] == 'FAKE-JWT-TOKEN'
+        @photos = Photo.order('id DESC')
+      else
+        @photos = Photo.where(private: false).all
+      end
+      respond_to do |format|
+        format.json { render json: @photos }
+      end
+    end
   end
 
   # GET /photos/1
@@ -71,6 +84,6 @@ class Api::PhotosController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def photo_params
-    params.require(:photo).permit(:title, :url, :price, :description)
+    params.require(:photo).permit(:title, :url, :price, :description, :private)
   end
 end

@@ -2,16 +2,22 @@ import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import { Photo } from '../_models/photo';
+import { AuthenticationService } from '../_services/authentication.sevice'
 
 @Injectable()
 export class PhotoService {
 	private photoUrl = "/api/photos";
-	constructor(private http: Http) {
+	constructor(
+		private http: Http,
+		private authenService: AuthenticationService) {
 
 	}
 
 	getPhotos(): Observable<Photo[]> {
-		return this.http.get(this.photoUrl)
+
+		let headers = new Headers({ 'Authorization': this.authenService.token });
+		let options = new RequestOptions({ headers: headers });
+		return this.http.get(this.photoUrl, options)
 			.map((response: Response) => <Photo[]>response.json())
 			.catch(this.handleError)
 	}

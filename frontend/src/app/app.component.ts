@@ -19,7 +19,6 @@ export class AppComponent implements OnInit {
 		private auth: AuthGuard,
 		private authService: AuthenticationService) {
 
-
 	}
 
 	sendMessage(q) {

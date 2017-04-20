@@ -3,7 +3,8 @@
 		<img src="{{ photo.url}}" alt="...">
 		<div class="caption">
 			<h3>{{ photo.title}}</h3>
-			<em>Price: {{photo.price | currency:'USD':true:'.0' }}</em>
+			<span class="label label-danger" *ngIf="photo.private">Private</span>
+			<span class="label label-success" *ngIf="!photo.private">Public</span> : {{photo.price | currency:'USD':true:'.0' }}
 			<br/>
 			<p> {{photo.description}}.</p>
 		</div>

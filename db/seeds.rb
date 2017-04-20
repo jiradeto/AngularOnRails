@@ -16,7 +16,16 @@ Photo.create!(
 
 Photo.create!(
   title: "Photo CCC",
+  url: 'https://s3.amazonaws.com/s3.imagefinder.co/uploads/2016/02/09103722/unsplash-com-photo-1453952399250-ab1d2ed44976-880x587.jpg',
+  description: 'hello world',
+  private: true,
+  price: 100000000
+)
+
+Photo.create!(
+  title: "Photo DDD",
   url: 'https://images.unsplash.com/30/ny-filtered.jpg',
   description: 'hello world',
   price: 10000
 )
+
