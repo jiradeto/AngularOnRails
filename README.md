@@ -22,15 +22,12 @@ Angular2 + Rails + Webpack CRUD examples.
 - [/frontend](https://github.com/jiradeto/AngularOnRails/tree/master/frontend)
 
 
-
 ### Setting web pack 
 - [/webpack.config.js](https://github.com/jiradeto/AngularOnRails/blob/master/webpack.config.js)
 
 
-
 ### Setting TypeScript
 - [/tsconfig.json](https://github.com/jiradeto/AngularOnRails/blob/master/tsconfig.json)
-
 
 
 ### Separate each feature in directory (homepage, login, photo)
@@ -39,12 +36,12 @@ other code such as services, models, guards etc are placed in folders prefixed w
 - [/frontend/src/app/photo](https://github.com/jiradeto/AngularOnRails/tree/master/frontend/src/app/photo)
 
 
-
-Reference every component in App Module
+### Reference every component in App Module
 - [/frontend/src/app/app.module.ts](https://github.com/jiradeto/AngularOnRails/blob/master/frontend/src/app/app.module.ts)
 
-Connect Rails with Angular
-> implement helper for include Angular 
+
+### Connect Rails with Angular
+implement helper function for load Angular in Rails
 - [/app/helpers/application_helper.rb](https://github.com/jiradeto/AngularOnRails/blob/master/app/helpers/application_helper.rb)
 ```ruby
 def webpack_script_for(bundle)
@@ -55,7 +52,8 @@ def webpack_script_for(bundle)
 end
  ```
 
- - [/app/views/layouts/application.html.erb](https://github.com/jiradeto/AngularOnRails/blob/master/app/views/layouts/application.html.erb)
+call helper function in layout file
+- [/app/views/layouts/application.html.erb](https://github.com/jiradeto/AngularOnRails/blob/master/app/views/layouts/application.html.erb)
  ```html
  <body>
     <%= yield %>
@@ -66,13 +64,21 @@ end
   ```
 
 
-Angular Routing
+### Define Angular Routing
 - [/frontend/src/app/app-routing.module.ts](https://github.com/jiradeto/AngularOnRails/blob/master/frontend/src/app/app-routing.module.ts)
 
-Angular Service ( call REST API )
+### Using Angular Guard for protecting routes (require login before access)
+- [/frontend/src/app/_guards/auth.guard.ts](https://github.com/jiradeto/AngularOnRails/blob/master/frontend/src/app/_guards/auth.guard.ts)
+
+
+reference
+- [https://blog.thoughtram.io/angular/2016/07/18/guards-in-angular-2.html](https://blog.thoughtram.io/angular/2016/07/18/guards-in-angular-2.html)
+
+### Angular Service ( call REST API )
 - [/frontend/src/app/photo/photo.service.ts](https://github.com/jiradeto/AngularOnRails/blob/master/frontend/src/app/photo/photo.service.ts)
 
-Access URL parameter in Angular
+
+### Access URL parameter in Angular
 - [/frontend/src/app/photo/photo-edit.component.ts](https://github.com/jiradeto/AngularOnRails/blob/master/frontend/src/app/photo/photo-edit.component.ts)
 ```javascript
 route.params.flatMap((params: Params) => 
