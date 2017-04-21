@@ -109,7 +109,7 @@ end
 
 
 ### i18 locale from Rails 
-1. render locale.yml with rails server in TranslateController [ URL ://api/translations/:locale ] <-- locale = en, ja
+1. render locale.yml to JSON with rails server in TranslatesController [ URL ://api/translations/:locale ] <-- locale = en, ja
 2. get json with library [@ngx-translate/core](https://www.npmjs.com/package/@ngx-translate/core)
 3. extract and render in Angular component
 
