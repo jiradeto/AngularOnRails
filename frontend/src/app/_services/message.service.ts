@@ -5,9 +5,18 @@ import { Subject } from 'rxjs/Subject';
 @Injectable()
 export class MessageService {
 	private subject = new Subject<any>();
+	private globalLocale : string = 'en'
 
 	sendMessage(message: string) {
 		this.subject.next({ text: message });
+	}
+
+	getLocale(){
+		return this.globalLocale;
+	}
+
+	setLocale(locale : string){
+		return this.globalLocale = locale;
 	}
 
 	clearMessage() {

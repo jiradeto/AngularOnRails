@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
 		private translate: TranslateService) {
 		this.router.events.subscribe((event) => {
 
-			translate.use('en');
+			translate.use(this.messageService.getLocale());
 
 			if (route.firstChild) {
 				this.showSearchField = route.firstChild.snapshot.data['hompage'];
@@ -30,10 +30,9 @@ export class AppComponent implements OnInit {
 		});
 	}
 
-	toggleLocale(locale: String) {
-		console.log('yeah !!' + locale);
-		this.translate.use(locale.toString());
-
+	toggleLocale(locale: string) {
+		this.messageService.setLocale(locale);
+		this.translate.use(this.messageService.getLocale());
 	}
 
 	sendMessage(q) {
