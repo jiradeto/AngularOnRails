@@ -6,44 +6,44 @@ import { AuthenticationService } from '../_services/authentication.sevice'
 
 @Injectable()
 export class PhotoService {
+	private headers = new Headers();
+	private options = new RequestOptions();
+
 	private photoUrl = "/api/photos";
 	constructor(
 		private http: Http,
 		private authenService: AuthenticationService) {
 
+		this.headers.append('Content-Type', 'application/json');
+		this.headers.append('Authorization', this.authenService.token);
+		this.options.headers = this.headers;
 	}
 
-	getPhotos(): Observable<Photo[]> {
 
-		let headers = new Headers({ 'Authorization': this.authenService.token });
-		let options = new RequestOptions({ headers: headers });
-		return this.http.get(this.photoUrl, options)
+	getPhotos(): Observable<Photo[]> {
+		return this.http.get(this.photoUrl, this.options)
 			.map((response: Response) => <Photo[]>response.json())
 			.catch(this.handleError)
 	}
 
 	updatePhoto(photo) {
-		let headers = new Headers({ 'Content-Type': 'application/json' });
-		let options = new RequestOptions({ headers: headers });
-		return this.http.put(this.photoUrl + "/" + photo.id, JSON.stringify(photo), options).map((res: Response) => res.json());
+		return this.http.put(this.photoUrl + "/" + photo.id, JSON.stringify(photo), this.options).map((res: Response) => res.json());
 	}
 
 	getPhoto(id: number) {
-		return this.http.get(this.photoUrl + "/" + id)
+		return this.http.get(this.photoUrl + "/" + id, this.options)
 			.map((response: Response) => <Photo>response.json())
 			.catch(this.handleError)
 	}
 
 	deletePhoto(photo) {
-		return this.http.delete(this.photoUrl + "/" + photo.id)
+		return this.http.delete(this.photoUrl + "/" + photo.id, this.options)
 			.map((response: Response) => <Photo>response.json())
 			.catch(this.handleError)
 	}
 
 	createPhoto(photo) {
-		let headers = new Headers({ 'Content-Type': 'application/json' });
-		let options = new RequestOptions({ headers: headers });
-		return this.http.post(this.photoUrl, JSON.stringify(photo), options).map((res: Response) => res.json());
+		return this.http.post(this.photoUrl, JSON.stringify(photo), this.options).map((res: Response) => res.json());
 	}
 
 	private handleError(error: Response | any) {
