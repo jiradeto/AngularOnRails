@@ -1,4 +1,5 @@
 <div class="container">
+	
 	<div class="thumbnail" *ngFor=" let photo of photos | searchPhoto:searchText">
 		<img src="{{ photo.url}}" alt="...">
 		<div class="caption">
@@ -10,3 +11,5 @@
 		</div>
 	</div>
 </div>
+
+

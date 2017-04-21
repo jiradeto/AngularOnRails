@@ -24,18 +24,15 @@ export class PhotoEditComponent {
 		photoRequest.subscribe(response => this.photo = response)
 	}
 
-
 	updatePhoto(photo: Photo) {
 		this.submitted = true;
 		this.photoService.updatePhoto(photo)
 			.subscribe(
 			data => { return true; },
 			error => {
-				console.log("error post photo");
 				console.log(error);
 				return Observable.throw(error);
 			}
-
 			);
 	}
 
