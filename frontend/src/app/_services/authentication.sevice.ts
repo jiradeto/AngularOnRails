@@ -9,7 +9,6 @@ export class AuthenticationService {
 
 
 	constructor(private http: Http, private router: Router) {
-		console.log('pond');
 		console.log(localStorage.getItem('currentUser'));
 		var currentUser = JSON.parse(localStorage.getItem('currentUser'));
 		this.token = currentUser && currentUser.token;

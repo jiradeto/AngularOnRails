@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from './_services/authentication.sevice'
 import { ActivatedRoute, Router } from '@angular/router'
 import { MessageService } from './_services/message.service'
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
 	selector: 'root-app',
@@ -17,13 +18,22 @@ export class AppComponent implements OnInit {
 		private messageService: MessageService,
 		private route: ActivatedRoute,
 		private router: Router,
-		private authService: AuthenticationService) {
+		private authService: AuthenticationService,
+		private translate: TranslateService) {
 		this.router.events.subscribe((event) => {
-			
+
+			translate.use('en');
+
 			if (route.firstChild) {
 				this.showSearchField = route.firstChild.snapshot.data['hompage'];
 			}
 		});
+	}
+
+	toggleLocale(locale: String) {
+		console.log('yeah !!' + locale);
+		this.translate.use(locale.toString());
+
 	}
 
 	sendMessage(q) {

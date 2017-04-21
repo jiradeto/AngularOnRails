@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
-
   namespace :api, defaults: { format: :json } do
     resources :photos
     post 'auth' => 'user#authenticate'
+    get 'translations/:locale' => 'translates#show'
+    resources :translations, only: :show
+
   end
 
   root to: 'application#index'

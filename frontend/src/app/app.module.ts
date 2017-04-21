@@ -1,9 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpModule, Http } from '@angular/http';
 import { ModalModule } from "ng2-modal";
 import { AppRoutingModule } from './app.routing.module';
+
+
 
 import { SearchPhotoPipe } from './_pipes/search-photo.pipe'
 
@@ -24,6 +26,15 @@ import { MessageService } from './_services/message.service'
 
 import { RouterStateSnapshot } from '@angular/router';
 
+// i18 locale string 
+
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+export function HttpLoaderFactory(http: Http) {
+	return new TranslateHttpLoader(http, "/api/translations/");
+}
+
 @NgModule({
 	declarations: [
 		SearchPhotoPipe,
@@ -36,6 +47,13 @@ import { RouterStateSnapshot } from '@angular/router';
 		LogoutComponent
 	],
 	imports: [
+		TranslateModule.forRoot({
+			loader: {
+				provide: TranslateLoader,
+				useFactory: HttpLoaderFactory,
+				deps: [Http]
+			}
+		}),
 		BrowserModule,
 		FormsModule,
 		HttpModule,
@@ -45,4 +63,5 @@ import { RouterStateSnapshot } from '@angular/router';
 	providers: [AuthGuard, AuthenticationService, MessageService],
 	bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
+
