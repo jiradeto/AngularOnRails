@@ -14,7 +14,7 @@ class Api::PhotosController < ApplicationController
       if request.headers['Authorization'] == 'FAKE-JWT-TOKEN'
         @photos = Photo.order('id DESC')
       else
-        @photos = Photo.where(private: false).all
+        @photos = Photo.where(private: false).order('id DESC')
       end
       respond_to do |format|
         format.json { render json: @photos }

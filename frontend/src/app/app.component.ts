@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthGuard } from './_guards/auth.guard'
 import { AuthenticationService } from './_services/authentication.sevice'
-import { ActivatedRoute } from '@angular/router'
+import { ActivatedRoute, Router } from '@angular/router'
 import { MessageService } from './_services/message.service'
 
 @Component({
@@ -12,13 +11,19 @@ import { MessageService } from './_services/message.service'
 export class AppComponent implements OnInit {
 	pageTitle = "Angular-On-Rails"
 	searchText = ""
+	showSearchField = true;
 
 	constructor(
 		private messageService: MessageService,
 		private route: ActivatedRoute,
-		private auth: AuthGuard,
+		private router: Router,
 		private authService: AuthenticationService) {
-
+		this.router.events.subscribe((event) => {
+			
+			if (route.firstChild) {
+				this.showSearchField = route.firstChild.snapshot.data['hompage'];
+			}
+		});
 	}
 
 	sendMessage(q) {
@@ -26,8 +31,7 @@ export class AppComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		console.log(this.route);
-		console.log(this.route.snapshot.component);
+
 	}
 
 	logOut() {

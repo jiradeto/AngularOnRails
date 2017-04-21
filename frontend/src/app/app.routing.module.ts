@@ -17,7 +17,7 @@ const routes: Routes = [
 
 	{ path: 'login', component: LoginComponent },
 	{ path: 'logout', component: LogoutComponent },
-	{ path: '', component: HomepageComponent },
+	{ path: '', component: HomepageComponent, data: { hompage: true } },
 	{ path: 'photos/new', component: PhotoNewComponent, canActivate: [AuthGuard] },
 	{ path: 'photos', component: PhotoListComponent, canActivate: [AuthGuard] },
 	{ path: 'photo/:id', component: PhotoEditComponent, canActivate: [AuthGuard] },
@@ -31,3 +31,4 @@ const routes: Routes = [
 })
 
 export class AppRoutingModule { }
+

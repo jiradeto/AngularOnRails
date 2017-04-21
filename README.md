@@ -5,7 +5,7 @@ Angular2 + Rails + Webpack CRUD examples.
 ### Install
 ```
   bundle install
-  bundle exec rake db:setup
+  rake db:create && rake db:migrate && rake db:seed
   npm install
 ```
 

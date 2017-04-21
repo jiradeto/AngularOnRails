@@ -3,9 +3,10 @@
 		<img src="{{ photo.url}}">
 		<div class="caption">
 			<h3>{{ photo.title}}</h3>
-			<em>Price: {{photo.price | currency:'USD':true:'.0' }}</em>
+			<span class="label label-danger" *ngIf="photo.private">Private</span>
+			<span class="label label-success" *ngIf="!photo.private">Public</span> : {{photo.price | currency:'USD':true:'.0' }}
 			<br/>
-			<small> {{photo.description}}.</small>
+			<p>{{photo.description}}</p>
 		</div>
 	</div>
 
@@ -15,25 +16,32 @@
 
 			<div class="form-group">
 				<label for="title">Title</label>
-				<input class="form-control" type="text" id="title" required name="title" [(ngModel)]="photo.title">
+				<input class="form-control" type="text" id="title" required name="title" [(ngModel)]="photo.title" [disabled]="submitted">
 			</div>
 
 			<div class="form-group">
 				<label for="url">Photo URL</label>
-				<input class="form-control" type="text" id="url" required name="url" [(ngModel)]="photo.url">
+				<input class="form-control" type="text" id="url" required name="url" [(ngModel)]="photo.url" [disabled]="submitted">
 			</div>
 
 			<div class="form-group">
 				<label for="price">Price</label>
 				<div class="input-group">
 					<span class="input-group-addon">$</span>
-					<input class="form-control" type="number" id="price" required name="price" [(ngModel)]="photo.price">
+					<input class="form-control" type="number" id="price" required name="price" [(ngModel)]="photo.price" [disabled]="submitted">
 				</div>
 			</div>
 
 			<div class="form-group">
+				<label for="private">Status </label>
+				<br>
+				<label class="radio-inline"><input type="radio" name="private"  [value]="true" ng-control="options" [(ngModel)]="photo.private" [disabled]="submitted"><span class="label label-danger" >Private</span></label>
+				<label class="radio-inline"><input type="radio" name="private"  [value]="false" ng-control="options" [(ngModel)]="photo.private"[disabled]="submitted" ><span class="label label-success">Public</span></label>
+			</div>
+
+			<div class="form-group">
 				<label for="description">Description <em>(Optional)</em></label>
-				<textarea class="form-control" type="text" id="description" required name="description" [(ngModel)]="photo.description"></textarea>
+				<textarea class="form-control" type="text" id="description" required name="description" [(ngModel)]="photo.description" [disabled]="submitted"></textarea>
 			</div>
 			<button type="submit" class="btn btn-primary btn-lg" [disabled]="!photoForm.form.valid" [hidden]="submitted">
             Create photos
@@ -45,5 +53,4 @@
 
 		</form>
 	</div>
-
 </div>

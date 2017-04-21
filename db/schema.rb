@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20170418102750) do
     t.text     "url",         limit: 65535
     t.boolean  "private",                   default: false, null: false
     t.integer  "price"
-    t.string   "description"
+    t.text     "description", limit: 65535
     t.datetime "created_at",                                null: false
     t.datetime "updated_at",                                null: false
   end

@@ -5,7 +5,7 @@ class CreatePhotos < ActiveRecord::Migration[5.0]
       t.text :url
       t.boolean :private, default: false, null: false
       t.integer :price
-      t.string :description
+      t.text :description
       t.timestamps
     end
   end
