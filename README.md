@@ -66,7 +66,7 @@ and then call helper function in layout file.
 >[/frontend/src/app/_guards/auth.guard.ts](https://github.com/jiradeto/AngularOnRails/blob/master/frontend/src/app/_guards/auth.guard.ts)
 
 
-### Share data between 2 components ([ref.](http://jasonwatmore.com/post/2016/12/01/angular-2-communicating-between-components-with-observable-subject))
+### [Share data between 2 components](#head2) ([ref.](http://jasonwatmore.com/post/2016/12/01/angular-2-communicating-between-components-with-observable-subject))
 implement MessageService to share data (string) that send from AppComponent to HomeComponent
 >[/frontend/src/app/_services/message.service.ts](https://github.com/jiradeto/AngularOnRails/blob/master/frontend/src/app/_services/message.service.ts)
 
