@@ -7,7 +7,8 @@ import { MessageService } from '../_services/message.service'
 
 @Component({
 	templateUrl: require('./homepage.component.html'),
-	providers: [PhotoService]
+	providers: [PhotoService],
+	
 })
 export class HomepageComponent implements OnInit, OnDestroy {
 	searchText: string;
