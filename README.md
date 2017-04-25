@@ -11,7 +11,7 @@ Angular2 + Rails + Webpack CRUD examples.
 
 ### How to run
 ```
-  npm start
+  npm start (build and watch new update code when save file and re-build)
   bundle exec rails server
 ```
 
@@ -112,6 +112,33 @@ end
 1. render locale.yml to JSON with rails server in TranslatesController [ URL ://api/translations/:locale ] <-- locale = en, ja
 2. get json with library [@ngx-translate/core](https://www.npmjs.com/package/@ngx-translate/core)
 3. extract and render in Angular component
+
+
+
+### Switch Environment [ref](https://angular.io/docs/ts/latest/guide/webpack.html)
+create webpack config per each environment ( ex webpack.dev.js, webpack.prod.js) and run following command before start rails server , finally result will be static javascript file in public/wasset on Rails server 
+- Developnent 
+```
+npm run build
+```
+
+- Production
+```
+npm run build:prod
+```
+
+for production build webpack will use the following Plugins
+
+*NoEmitOnErrorsPlugin—stops the build if there is an error.
+
+*UglifyJsPlugin—minifies the bundles.
+
+*ExtractTextPlugin—extracts embedded css as external files, adding cache-busting hash to the filename.
+
+*DefinePlugin—use to define environment variables that you can reference within the application.
+
+*LoaderOptionsPlugins—to override options of certain loaders.
+
 
 
 

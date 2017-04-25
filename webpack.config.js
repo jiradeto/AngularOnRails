@@ -11,9 +11,6 @@ var assetsPluginInstance = new AssetsPlugin({
 	path: path.join(__dirname, 'frontend')
 });
 
-// Webpack Plugins
-var CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
-
 /*
  * Config
  */
@@ -62,16 +59,13 @@ module.exports = {
 				test: /\.html$/,
 				use: 'file-loader'
 			}
-
 		]
 	},
 
 	plugins: [
+		new webpack.optimize.CommonsChunkPlugin({
+			name: ['app', 'vendor']
+		}),
 		assetsPluginInstance
-	],
-
-	// for vagrant
-	watchOptions: {
-		poll: 1000
-	}
+	]
 };

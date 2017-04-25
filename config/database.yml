@@ -50,5 +50,5 @@ test:
 production:
   <<: *default
   database: Angular-On-Rails_production
-  username: Angular-On-Rails
-  password: <%= ENV['ANGULAR-ON-RAILS_DATABASE_PASSWORD'] %>
+  username: root
+  password: 
