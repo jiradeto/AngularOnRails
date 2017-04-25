@@ -106,7 +106,7 @@ end
 
 ```
 
-
+<br>
 
 ### i18 locale from Rails 
 1. render locale.yml to JSON with rails server in TranslatesController [ URL ://api/translations/:locale ] <-- locale = en, ja
@@ -114,9 +114,18 @@ end
 3. extract and render in Angular component
 
 
+<br>
 
-### Switch Environment [ref](https://angular.io/docs/ts/latest/guide/webpack.html)
-create webpack config per each environment ( ex webpack.dev.js, webpack.prod.js) and run following command before start rails server , finally result will be static javascript file in public/wasset on Rails server 
+### Config Environment for Webpack [ref](https://angular.io/docs/ts/latest/guide/webpack.html)
+1. create webpack config per each environment  in root directory 
+
+>ex, webpack.dev.js, webpack.prod.js
+
+2. config command in `package.json` for webpack config
+
+>ex, `build:prod": "webpack --progress --profile --colors --display-error-details --display-cached --config webpack.prod.js --bail`
+
+3. run following command for build
 - Developnent 
 ```
 npm run build
@@ -126,20 +135,3 @@ npm run build
 ```
 npm run build:prod
 ```
-
-for production build webpack will use the following Plugins
-
-*NoEmitOnErrorsPlugin—stops the build if there is an error.
-
-*UglifyJsPlugin—minifies the bundles.
-
-*ExtractTextPlugin—extracts embedded css as external files, adding cache-busting hash to the filename.
-
-*DefinePlugin—use to define environment variables that you can reference within the application.
-
-*LoaderOptionsPlugins—to override options of certain loaders.
-
-
-
-
-
